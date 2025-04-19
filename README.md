@@ -1,17 +1,16 @@
 # Veterinary clinic website with appointment reservation system
-#### Video Demo:  <https://youtu.be/KOCkehVN8Q0>
 #### Description:
 
 
-This project is a web-based application in python, using JavaScript and
+This project is a fullstack, web-based application in python, using JavaScript and
 SQL (from CS50 library). It also features one additional python program,
 more on that later.
 
-The web application is about a veterinary clinic, it provides basic information to the clients,
+The web application is for a veterinary clinic, it provides basic information to the clients,
 such as services, contact, information about the clinic and it also features an online
 appointment reservation system.
 
-The main "design" features of the website are build by using bootstrap.
+The main design features of the website are build by using bootstrap library.
 Some of the default components of bootstrap library are also modified in
 custom.css file, which overwrites some of the bootstrap values (like colors) while rendering the website.
 
