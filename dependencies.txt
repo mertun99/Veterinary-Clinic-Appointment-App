@@ -1,0 +1,6 @@
+python
+sqlite
+CS50
+Flask
+Flask_Session
+wraps

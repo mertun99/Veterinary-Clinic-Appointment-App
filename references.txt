@@ -1,0 +1,8 @@
+https://blog.hubspot.com/website/bootstrap-navbar
+https://getbootstrap.com/docs/4.0/components/navbar/
+https://mdbootstrap.com/docs/standard/content-styles/colors/
+https://getbootstrap.com/docs/5.1/customize/color/#theme-colors
+https://www.cssportal.com/css-validator/
+https://mdbootstrap.com/docs/standard/extended/login/
+https://www.programiz.com/python-programming/datetime
+https://www.geeksforgeeks.org/python-datetime-timedelta-function/
