@@ -1,0 +1,130 @@
+{% extends "layout.html" %}
+{% block title %} Manage appointments {% endblock %}
+{% block main %}
+
+<h3 class="text-warning"> Pending <button onclick="location.href = '/clear';" class="btn btn-outline-warning my-2 my-sm-0" type="submit">Clear old & rejected appointments</button>
+</h3>
+<!-- CONSOLE FOR PENDING REQUESTS -->
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Operation</th>
+            <th scope="col">Date</th>
+            <th scope="col">Hour</th>
+            <th scope="col">Status</th>
+            <th scope="col">Change status</th>
+        </tr>
+    </thead>
+    <tbody> {% for appointment in pending %} <tr>
+            <th scope="row">
+                {{appointment["name"]}}
+            </th>
+            <th scope="row">
+                {{appointment["email"]}}
+            </th>
+            <th scope="row">
+                {{appointment["option"]}}
+            </th>
+            <th scope="row">
+                {{appointment["date"]}}
+            </th>
+            <th scope="row">
+                {{appointment["hour"]}}:00
+            </th>
+            <th scope="row">
+                {{appointment["status"]}}
+            </th>
+            <th scope="row">
+                <form name="handleform" method="post">
+                    <button name="accept" onclick="alert('Email with update information has been sent (not really!).')" value="{{appointment["id"]}}" class="btn btn-outline-success my-2 my-sm-0" type="submit">Accept</button>
+                    <button name="reject" onclick="alert('Email with update information has been sent (not really!).')" value="{{appointment["id"]}}" class="btn btn-outline-danger my-2 my-sm-0" type="submit">Reject</button>
+                </form>
+            </th>
+        </tr> {% endfor %} </tbody>
+</table>
+<div style="margin-top: 35px;"></div>
+<h3 class="text-success"> Accepted: </h3>
+
+<!-- ACCEPTED APOINTMENTS -->
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Operation</th>
+            <th scope="col">Date</th>
+            <th scope="col">Hour</th>
+            <th scope="col">Status</th>
+            <th scope="col">Change status</th>
+        </tr>
+    </thead>
+    <tbody> {% for appointment in accepted %} <tr>
+            <th scope="row">
+                {{appointment["name"]}}
+            </th>
+            <th scope="row">
+                {{appointment["email"]}}
+            </th>
+            <th scope="row">
+                {{appointment["option"]}}
+            </th>
+            <th scope="row">
+                {{appointment["date"]}}
+            </th>
+            <th scope="row">
+                {{appointment["hour"]}}:00
+            </th>
+            <th scope="row">
+                {{appointment["status"]}}
+            </th>
+            <th scope="row">
+                <form name="handleform" method="post">
+                    <button name="reject" onclick="alert('Email with update information has been sent (not really!).')" value="{{appointment["id"]}}" class="btn btn-outline-danger my-2 my-sm-0" type="submit">Reject</button>
+                </form>
+            </th>
+        </tr> {% endfor %} </tbody>
+</table>
+<div style="margin-top: 35px;"></div>
+<h3 class="text-danger"> Rejected: </h3>
+
+<!-- REJECTED APOINTMENTS -->
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Operation</th>
+            <th scope="col">Date</th>
+            <th scope="col">Hour</th>
+            <th scope="col">Status</th>
+            <th scope="col">Change status</th>
+        </tr>
+    </thead>
+    <tbody> {% for appointment in rejected %} <tr>
+            <th scope="row">
+                {{appointment["name"]}}
+            </th>
+            <th scope="row">
+                {{appointment["email"]}}
+            </th>
+            <th scope="row">
+                {{appointment["option"]}}
+            </th>
+            <th scope="row">
+                {{appointment["date"]}}
+            </th>
+            <th scope="row">
+                {{appointment["hour"]}}:00
+            </th>
+            <th scope="row">
+                {{appointment["status"]}}
+            </th>
+            <th scope="row">
+                <form name="handleform" method="post">
+                    <button name="accept" onclick="alert('Email with update information has been sent (not really!).')" value="{{appointment["id"]}}" class="btn btn-outline-success my-2 my-sm-0" type="submit">Accept</button>
+                </form>
+            </th>
+        </tr> {% endfor %} </tbody>
+</table> {% endblock %}

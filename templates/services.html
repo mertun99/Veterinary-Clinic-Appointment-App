@@ -1,0 +1,116 @@
+{% extends "layout.html" %} {% block title %} Services {% endblock %} {% block
+main %}
+
+<!-- Marketing messaging and featurettes -->
+<!-- from url=(0052)https://getbootstrap.com/docs/4.3/examples/carousel/ -->
+
+<div class="container marketing">
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider" />
+
+    <div class="row featurette">
+        <div class="col-md-7" id="diagnostics">
+            <h2 class="featurette-heading">
+                Diagnostic and therapeutics.
+                <span class="text-muted">By proffesionals.</span>
+            </h2>
+            <p class="lead">
+                We offer a comprehensive array of laboratory tests, advanced
+                imaging technology, such as x-rays, digital ultrasound, a wide
+                variety of endoscopes and more. We also provide preventive
+                screening with care and attention to detail to ensure your pet
+                has been diagnosted correctly. Our veterinary team will ensure
+                to select best possible treatment
+            </p>
+        </div>
+        <div class="col-md-5">
+            <img
+                src="{{ url_for('static', filename='images/exam.jpg') }}"
+                class="bd-placeholder-img"
+                width="530"
+                height="352"
+                aria-label=""
+            />
+            <!--<svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg> -->
+        </div>
+    </div>
+
+    <hr class="featurette-divider" />
+
+    <div class="row featurette" id="surgery">
+        <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading">
+                Surgery
+                <span class="text-muted">..with cutting-edge equipment.</span>
+            </h2>
+            <p class="lead">
+                We dispose a high quiality surgery equipment such as laser
+                scalpels, newest types of electrical cauters and others. Our
+                veterinary team will walk you through the process to make a
+                decision whether to perform the surgery, as it can be stressfull
+                not only to your pet's but to you as well. Therefore we will
+                happily provide you with information necessary to make the
+                process easier. Our surgery specialities include biopsies,
+                abdominal exploratory surgery, wound repairs and more.
+            </p>
+        </div>
+        <div class="col-md-5 order-md-1">
+            <img
+                src="{{ url_for('static', filename='images/surgery.jpg') }}"
+                class="bd-placeholder-img"
+                width="450"
+                height="350"
+                aria-label=""
+            />
+            <!-- <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg> -->
+        </div>
+    </div>
+
+    <hr class="featurette-divider" />
+
+    <div class="row featurette" id="counseling">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">
+                Counseling.
+                <span class="text-muted">You choose the topic!</span>
+            </h2>
+            <p class="lead">
+                We provide guaidence regarding your pet's specific needs,
+                including dietary, behavioral to name a few. We are open to
+                discussion and like to provide useful information regarding your
+                pet's life.
+            </p>
+        </div>
+        <div class="col-md-5">
+            <img
+                src="{{ url_for('static', filename='images/dog.jpg') }}"
+                class="bd-placeholder-img"
+                width="540"
+                height="360"
+                aria-label=""
+            />
+        </div>
+    </div>
+
+    <hr class="featurette-divider" />
+
+    <!-- /END THE FEATURETTES -->
+</div>
+<!-- /.container -->
+
+{% endblock %}
+
+{% block javascript %}
+
+    <!-- FROM ChatGPT... does not work anyway :(
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var section = document.querySelector('#counseling');
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+</script>
+-->
+{% endblock %}

@@ -1,0 +1,112 @@
+{% extends "layout.html" %}
+{% block title %} Appointments {% endblock %}
+{% block main %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <!--div grid management by ChatGPT -->
+            <div class="left-div"><h1>Appointment request</h1></div>
+            <div class="container">
+                <form class="container mt-4" method="post">
+                    <!-- container classes choosed by Chat GPT-->
+                    <div class="form-group">
+                        <label for="name">Full name:</label>
+                        <input
+                            placeholder="Firstname Secondname"
+                            required
+                            type="text"
+                            class="form-control"
+                            id="name"
+                            name="name"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input
+                            placeholder="email@domain.com"
+                            required
+                            type="email"
+                            class="form-control"
+                            id="email"
+                            name="email"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="options">Select an option:</label>
+                        <select
+                            required
+                            class="form-control"
+                            id="option"
+                            name="option"
+                        >
+                            <option value="Examination">Examination</option>
+                            <option value="Vaccination">Vaccination</option>
+                            <option value="Nail trimming">Nail trimming</option>
+                            <option value="Castration">Castration</option>
+                            <option value="Dental treatment">
+                                Dental treatment
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="meeting-time">Choose a day:</label>
+                        <input
+                            required
+                            type="date"
+                            class="form-control"
+                            id="date"
+                            name="date"
+                            value="{{min}}"
+                            min="{{min}}"
+                            max="{{max}}"
+                            required
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="meeting-time"
+                            >Choose a time (Operational hours 9am - 15pm):</label
+                        >
+                        <input
+                            placeholder="9-15"
+                            required
+                            type="number"
+                            class="form-control"
+                            id="hour"
+                            name="hour"
+                            min="9"
+                            max="15"
+                        />
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        Submit
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="right-div"><h1>Occupied dates</h1></div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Operation</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Hour</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for appointment in taken %}
+                    <tr>
+                        <th scope="row">{{appointment["option"]}}</th>
+                        <th scope="row">{{appointment["date"]}}</th>
+                        <th scope="row">{{appointment["hour"]}}:00</th>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

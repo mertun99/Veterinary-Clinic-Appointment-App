@@ -1,0 +1,90 @@
+/*https://mdbootstrap.com/docs/standard/content-styles/colors/
+https://getbootstrap.com/docs/5.1/customize/color/#theme-colors*/
+
+.bg-primary {
+    background-color: #123f65 !important;
+}
+
+/* https://stackoverflow.com/questions/35352336/setting-a-max-height-on-a-bootstrap-carousel */
+/* ChatGPT */
+.carousel-inner img {
+  object-fit: cover;
+  object-position: center center;
+  max-height: 400px;
+  width: auto; /* To maintain aspect ratio */
+  margin: 0 auto; /* To center horizontally */
+}
+
+/*https://www.w3schools.com/cssref/css3_pr_object-position.php*/
+.carousel-inner .image-monitor {
+  object-position: center 30%;
+}
+
+.carousel-inner .image-pup {
+  object-position: center 40%;
+}
+
+.float-right {
+    margin-right: 5px;
+    }
+
+/*
+.rounded-circle {
+    object-fit: scale-down !important;
+    clip-path: circle(50% at center) !important;
+}
+*/
+
+
+.map {
+    margin: 0 auto;
+    width: 800px; /* Or any other desired width */
+}
+
+.jumbotron {
+    background-color: #ffffff !important;
+}
+
+.btn-secondary {
+    background-color: #2e5c75 !important;
+}
+
+
+
+/* ------------ vvvvv ------------ /*
+/* ------------ UNUSED ------------ /*
+/* ------------ vvvvv ------------ /*
+
+
+/* Unused so far: */
+.bg-secondary {
+    background-color: #5500ff !important;
+}
+
+
+.bg-success {
+    background-color: #7af8ff !important;
+}
+
+
+.bg-danger {
+    background-color: #ff001b !important;
+}
+
+.bg-warning {
+    background-color: #ffc200 !important;
+}
+
+
+.bg-info {
+    background-color: #5896ff !important;
+}
+
+.bg-light {
+    background-color: #1f5588 !important;
+}
+
+
+.bg-dark {
+    background-color: #343a40 !important;
+}

@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block title %} Map & Contact {% endblock %}
+{% block index %}
+
+<div class="container col-xxl-8 px-4 py-5">
+    <!-- https://getbootstrap.com/docs/5.3/examples/heroes/ -->
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <div class="col-10 col-sm-8 col-lg-6">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2662.32787196404!2d17.099398453138765!3d48.1424838904572!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476c895d93b150c5%3A0x2fd320efbc06a139!2sBratislavsk%C3%BD%20hrad!5e0!3m2!1ssk!2scz!4v1713366623151!5m2!1ssk!2scz"
+                width="500"
+                height="300"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+        </div>
+        <div class="col-lg-6">
+            <h1 class="display-5 fw-bold lh-1 mb-3">
+                You can find us here: <br />(not really!)
+            </h1>
+            <p class="lead">
+                The address is .... If you want to check us out, feel free to
+                come by during our opening hours <b>09 am - 07 pm.</b> <br />
+                If you are hesitant, feel free to contact us:
+            </p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                <button
+                    onclick="location.href = '/contact';"
+                    type="button"
+                    class="btn btn-primary btn-lg px-4 me-md-2"
+                >
+                    Contact us
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="map"></div>
+
+{% endblock %}
