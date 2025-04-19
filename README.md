@@ -6,7 +6,7 @@ This project is a fullstack, web-based application in python, using JavaScript a
 SQL (from CS50 library). It also features one additional python program,
 more on that later.
 
-The web application is for a veterinary clinic, it provides basic information to the clients,
+The web application is for a general veterinary clinic, it provides basic information to the clients,
 such as services, contact, information about the clinic and it also features an online
 appointment reservation system.
 
@@ -15,10 +15,10 @@ Some of the default components of bootstrap library are also modified in
 custom.css file, which overwrites some of the bootstrap values (like colors) while rendering the website.
 
 #### Dependencies
-Can be found in **dependencies.txt**
+Can be found in **requirements.txt**
 
 #### app.py
-The main program is app.py. It features most of the logic and defines all of the routes.
+The main programm. It features most of the logic and defines all of the routes.
 There are 9 main routes:
 <br>
 / (index), /services, /pricing, /appointments, /map, /admin (login), /logout, /console and /clear.
@@ -26,7 +26,7 @@ There are 9 main routes:
 Most of these are however to provide general information to the clients (pet owners),
 such as location of the clinic, opening hours, services provided by the staff..
 Some, however are to handle specific components of the website:
-**/admin** lets you (veterinary clinic staff) log in to the website <i>(by default usr: admin pass: admin)</i>.
+**/admin** lets you (clinic staff) log in to the website <i>(by default usr: admin pswrd: admin)</i>.
 <br> While they are logged in, they can manage appointment request made by the public.
 This can be made through **/console** route.
 The public doesnt need to make an account and the appointment requests can be made through /appointments route.
