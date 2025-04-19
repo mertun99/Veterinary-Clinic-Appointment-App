@@ -1,6 +1,4 @@
-python
-sqlite
-CS50
+cs50
 Flask
 Flask_Session
 wraps
