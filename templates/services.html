@@ -100,6 +100,7 @@
 
 {% endblock %}
 
+
 {% block javascript %}
 
 <script>
@@ -114,11 +115,12 @@
             setTimeout(function () {
                 const section = document.querySelector(hash);
                 const navbar = document.querySelector('.navbar'); // Adjust selector for navbar
+                const paddingOffset = 20; // Add 20p extra offset for better positioning
 
                 if (section && navbar) {
                     const navbarHeight = navbar.offsetHeight;
                     const sectionPosition = section.getBoundingClientRect().top + window.scrollY;
-                    const offsetPosition = sectionPosition - navbarHeight;
+                    const offsetPosition = sectionPosition - navbarHeight - paddingOffset; // UPDATED
 
                     // Scroll
                     window.scrollTo({
