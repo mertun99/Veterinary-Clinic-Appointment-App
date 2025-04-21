@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% block title %} Manage appointments {% endblock %}
+{% block title %} MManage Appointments {% endblock %}
 {% block main %}
 
 <h3 class="text-warning"> Pending <button onclick="location.href = '/clear';" class="btn btn-outline-warning my-2 my-sm-0" type="submit">Clear old & rejected appointments</button>
@@ -38,8 +38,8 @@
             </th>
             <th scope="row">
                 <form name="handleform" method="post">
-                    <button name="accept" onclick="alert('Email with update information has been sent (not really!).')" value="{{appointment["id"]}}" class="btn btn-outline-success my-2 my-sm-0" type="submit">Accept</button>
-                    <button name="reject" onclick="alert('Email with update information has been sent (not really!).')" value="{{appointment["id"]}}" class="btn btn-outline-danger my-2 my-sm-0" type="submit">Reject</button>
+                    <button name="accept" onclick="alert('An email notification has been sent (not really!).')" value="{{appointment["id"]}}" class="btn btn-outline-success my-2 my-sm-0" type="submit">Accept</button>
+                    <button name="reject" onclick="alert('An email notification has been sent (not really!).')" value="{{appointment["id"]}}" class="btn btn-outline-danger my-2 my-sm-0" type="submit">Reject</button>
                 </form>
             </th>
         </tr> {% endfor %} </tbody>
