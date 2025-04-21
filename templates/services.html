@@ -104,11 +104,13 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // Get the current URL hash (e.g., #surgery, #counseling)
         const hash = window.location.hash;
 
         if (hash) {
-            // Delay execution to ensure the DOM is fully rendered
+            // Temporarily remove the hash from the URL to prevent default scrolling
+            history.replaceState(null, null, ' ');
+
+            // Delay execution
             setTimeout(function () {
                 const section = document.querySelector(hash);
                 const navbar = document.querySelector('.navbar'); // Adjust selector for your navbar
@@ -118,13 +120,16 @@
                     const sectionPosition = section.getBoundingClientRect().top + window.scrollY;
                     const offsetPosition = sectionPosition - navbarHeight;
 
-                    // Smooth scroll to the adjusted position
+                    // Scroll
                     window.scrollTo({
                         top: offsetPosition,
                         behavior: 'smooth'
                     });
+
+                    // Restore the hash
+                    history.replaceState(null, null, hash);
                 }
-            }, 100); // Small delay for rendering
+            }, 100); // Render delay
         }
     });
 </script>
