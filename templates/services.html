@@ -100,36 +100,39 @@
 
 {% endblock %}
 
+
 {% block javascript %}
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
+        // Check if there is a hash in the URL (e.g., #surgery, #counseling)
         const hash = window.location.hash;
 
         if (hash) {
             // Temporarily remove the hash from the URL to prevent default scrolling
             history.replaceState(null, null, ' ');
 
-            // Delay execution
+            // Delay execution to ensure the DOM is fully loaded and rendered
             setTimeout(function () {
                 const section = document.querySelector(hash);
-                const navbar = document.querySelector('.navbar'); // Adjust selector for navbar
+                const navbar = document.querySelector('.navbar'); // Adjust selector for your navbar
+                const paddingOffset = 10; // Add 10px extra offset for better positioning (NEW)
 
                 if (section && navbar) {
                     const navbarHeight = navbar.offsetHeight;
                     const sectionPosition = section.getBoundingClientRect().top + window.scrollY;
-                    const offsetPosition = sectionPosition - navbarHeight;
+                    const offsetPosition = sectionPosition - navbarHeight - paddingOffset; // UPDATED
 
-                    // Scroll
+                    // Smooth scroll to the adjusted position
                     window.scrollTo({
                         top: offsetPosition,
                         behavior: 'smooth'
                     });
 
-                    // Restore the hash
+                    // Restore the hash in the URL after scrolling
                     history.replaceState(null, null, hash);
                 }
-            }, 100); // Render delay
+            }, 100); // Small delay for rendering
         }
     });
 </script>
