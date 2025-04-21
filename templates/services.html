@@ -1,5 +1,6 @@
-{% extends "layout.html" %} {% block title %} Services {% endblock %} {% block
-main %}
+{% extends "layout.html" %}
+{% block title %} Services {% endblock %}
+{% block main %}
 
 <!-- Marketing messaging and featurettes -->
 <!-- from url=(0052)https://getbootstrap.com/docs/4.3/examples/carousel/ -->
@@ -32,7 +33,6 @@ main %}
                 height="352"
                 aria-label=""
             />
-            <!--<svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg> -->
         </div>
     </div>
 
@@ -63,7 +63,6 @@ main %}
                 height="350"
                 aria-label=""
             />
-            <!-- <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg> -->
         </div>
     </div>
 
@@ -103,14 +102,36 @@ main %}
 
 {% block javascript %}
 
-    <!-- FROM ChatGPT... does not work anyway :(
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var section = document.querySelector('#counseling');
-        if (section) {
-            section.scrollIntoView({ behavior: 'smooth' });
+    document.addEventListener('DOMContentLoaded', function () {
+        const hash = window.location.hash;
+
+        if (hash) {
+            // Temporarily remove the hash from the URL to prevent default scrolling
+            history.replaceState(null, null, ' ');
+
+            // Delay execution
+            setTimeout(function () {
+                const section = document.querySelector(hash);
+                const navbar = document.querySelector('.navbar'); // Adjust selector for navbar
+
+                if (section && navbar) {
+                    const navbarHeight = navbar.offsetHeight;
+                    const sectionPosition = section.getBoundingClientRect().top + window.scrollY;
+                    const offsetPosition = sectionPosition - navbarHeight;
+
+                    // Scroll
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+
+                    // Restore the hash
+                    history.replaceState(null, null, hash);
+                }
+            }, 100); // Render delay
         }
     });
 </script>
--->
+
 {% endblock %}

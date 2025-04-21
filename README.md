@@ -143,7 +143,7 @@ This website gives pet owners a user-friendly way to find clinic info and book a
 
 1. [Freepik](https://www.freepik.com/) – Image resources  
 2. [TextMagic Code Formatter](https://freetools.textmagic.com/source-code-formatter) – Code formatting  
-3. [ChatGPT](https://chat.openai.com/) – Guidance and suggestions  
+3. [ChatGPT](https://chat.openai.com/) – guidance, suggestions, and grammar correction
 4. [Bootstrap](https://getbootstrap.com/) – UI framework  
 5. [Stack Overflow](https://stackoverflow.com/) – Troubleshooting  
 6. [W3Schools](https://www.w3schools.com/) – Web dev tutorials  
