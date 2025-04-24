@@ -11,7 +11,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from cs50 import SQL
 
 #SQL CONFIG
-db = SQL("sqlite:///all.db")
+db = SQL("sqlite:///vet_clinic.db")
 
 #FLASK CONFIG
 app = Flask(__name__)
