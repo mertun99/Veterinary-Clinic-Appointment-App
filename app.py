@@ -48,7 +48,7 @@ def appointments():
         time = get_time()
         today = time["today"]
         tomorrow = time["tomorrow"]
-        taken = db.execute("SELECT * FROM appointments WHERE status = 'accepted' AND date >= (?) ORDER BY date, hour ASC;", today)
+        taken = db.execute("SELECT id, name, email, option, strftime('%d %m %Y', date) AS formatted_date, hour, status FROM appointments WHERE status = 'accepted' AND date >= (?) ORDER BY date, hour ASC;", today)
         return render_template("appointments.html", min = tomorrow, max = time["max"], taken=taken, user=user)
 
     elif request.method == "POST":
