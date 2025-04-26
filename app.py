@@ -62,7 +62,7 @@ def appointments():
         time = get_time()
         if time[0] == date and int(str(time[2])[:2]) > 15:
             #The selected date is TODAY, but it's after closing time. (too late)
-            return apology("You can't select a date in the past!", user)
+            return apology("Please select a valid date within our opening hours.", user)
         elif time[0] == date and int(str(time[2])[:2]) <= int(hour):
             #Selected date is in the past
             return apology("You can't select a date in the past!", user)
