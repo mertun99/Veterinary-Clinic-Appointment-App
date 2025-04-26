@@ -46,9 +46,10 @@ def appointments():
     check_if_logged_in()
     if request.method == "GET":
         time = get_time()
+        tomorrow = time = get_time() + timedelta(days=1)
 
         taken = db.execute("SELECT * FROM appointments WHERE status = 'accepted' AND date >= (?) ORDER BY date, hour ASC;", (time[0]))
-        return render_template("appointments.html", min = time[0], max = time[1], taken=taken, user=user)
+        return render_template("appointments.html", min = tomorrow[0], max = time[1], taken=taken, user=user)
 
     elif request.method == "POST":
         name = request.form.get("name")
@@ -64,7 +65,7 @@ def appointments():
             #The selected date is TODAY, but it's after closing time. (too late)
             return apology("Please select a valid date within our opening hours.", user)
         elif time[0] == date and int(str(time[2])[:2]) <= int(hour):
-            #Selected date is in the past
+            #Selected appointment time for today is in the past
             return apology("You can't select a date in the past!", user)
         if db.execute("SELECT id FROM appointments WHERE date = (?) and hour = (?) and status = (?);",date,hour,"accepted") != []:
             #Occupied date
