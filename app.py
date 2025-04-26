@@ -60,11 +60,11 @@ def appointments():
 
 
         time = get_time()
-        if time[0] == date and int(str(time[2])[:2]) >= 15:
-            #Too late today
+        if time[0] == date and int(str(time[2])[:2]) > 15:
+            #The selected date is TODAY, but it's after closing time. (too late)
             return apology("You can't select a date in the past!", user)
         elif time[0] == date and int(str(time[2])[:2]) <= int(hour):
-            #This has already been today
+            #Selected date is in the past
             return apology("You can't select a date in the past!", user)
         if db.execute("SELECT id FROM appointments WHERE date = (?) and hour = (?) and status = (?);",date,hour,"accepted") != []:
             #Occupied date
