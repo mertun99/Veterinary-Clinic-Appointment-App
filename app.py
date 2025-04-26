@@ -46,10 +46,9 @@ def appointments():
     check_if_logged_in()
     if request.method == "GET":
         time = get_time()
-        tomorrow = time = get_time() + timedelta(days=1)
 
         taken = db.execute("SELECT * FROM appointments WHERE status = 'accepted' AND date >= (?) ORDER BY date, hour ASC;", (time[0]))
-        return render_template("appointments.html", min = tomorrow[0], max = time[1], taken=taken, user=user)
+        return render_template("appointments.html", min = min[0], max = time[1], taken=taken, user=user)
 
     elif request.method == "POST":
         name = request.form.get("name")
