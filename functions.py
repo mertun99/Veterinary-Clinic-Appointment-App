@@ -29,7 +29,7 @@ def get_time():
     time_data = {
         "today": now.strftime("%Y-%m-%d"),
         "tomorrow": (now + timedelta(days=1)).strftime("%Y-%m-%d"),
-        "max": (now + timedelta(days=90)).strftime("%Y-%m-%d"),
+        "max": (now + timedelta(days=60)).strftime("%Y-%m-%d"),
         "current": now.strftime("%H:%M")
     }
     return time_data
