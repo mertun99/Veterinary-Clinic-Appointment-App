@@ -11,7 +11,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from cs50 import SQL
 
 #SQL CONFIG
-db = SQL("sqlite:///all.db")
+db = SQL("sqlite:///vet_clinic.db")
 
 #FLASK CONFIG
 app = Flask(__name__)
@@ -46,31 +46,34 @@ def appointments():
     check_if_logged_in()
     if request.method == "GET":
         time = get_time()
-
-        taken = db.execute("SELECT * FROM appointments WHERE status = 'accepted' AND date >= (?) ORDER BY date, hour ASC;", (time[0]))
-        return render_template("appointments.html", min = time[0], max = time[1], taken=taken, user=user)
+        today = time["today"]
+        tomorrow = time["tomorrow"]
+        taken = db.execute("SELECT * FROM appointments WHERE status = 'accepted' AND date >= (?) ORDER BY date, hour ASC;", today)
+        return render_template("appointments.html", min = tomorrow, max = time["max"], taken=taken, user=user)
 
     elif request.method == "POST":
-        name = request.form.get("name")
-        email = request.form.get("email")
-        option = request.form.get("option")
-        date = request.form.get("date")
-        hour = request.form.get("hour")
-        #print(name,email, option, date, hour)
+        usr_name = request.form.get("name")
+        usr_email = request.form.get("email")
+        usr_option = request.form.get("option")
+        usr_date = request.form.get("date")
+        usr_hour = request.form.get("hour")
+        #print(usr_name,usr_email, usr_option, usr_dateusr_, hour)
 
 
         time = get_time()
-        if time[0] == date and int(str(time[2])[:2]) >= 15:
-            #Too late today
-            return apology("You can't select a date in the past!", user)
-        elif time[0] == date and int(str(time[2])[:2]) <= int(hour):
-            #This has already been today
-            return apology("You can't select a date in the past!", user)
-        if db.execute("SELECT id FROM appointments WHERE date = (?) and hour = (?) and status = (?);",date,hour,"accepted") != []:
+        if time["today"] == usr_date:
+            #Reservation for the same day --> should select another day
+            return apology("Please select another day", user)
+            
+            #############################################
+            #TODO: Implement FULL server-side validation.
+            #############################################
+        
+        if db.execute("SELECT id FROM appointments WHERE date = (?) and hour = (?) and status = (?);",usr_date,usr_hour,"accepted") != []:
             #Occupied date
             return apology("This date and time is taken already! Please select another one.", user)
         else:
-            db.execute("INSERT INTO appointments (name, email, option, date,hour,status) VALUES (?,?,?,?,?,?);",name,email,option,date,hour,"pending")
+            db.execute("INSERT INTO appointments (name, email, option, date,hour,status) VALUES (?,?,?,?,?,?);",usr_name, usr_email, usr_option, usr_date, usr_hour, "pending")
             return render_template("message.html", user=user)
 
 
@@ -174,7 +177,7 @@ def console():
 @login_required
 def clear():
     time = get_time()
-    today = time[0]
+    today = time["today"]
     db.execute("DELETE FROM appointments WHERE date < ?;",today)
     db.execute("DELETE FROM appointments WHERE status = ?;", "rejected")
     db.execute("DELETE FROM appointments WHERE status = ? AND date < ?;", "accepted",today)
