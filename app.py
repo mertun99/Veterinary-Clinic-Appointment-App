@@ -61,12 +61,15 @@ def appointments():
 
 
         time = get_time()
-        if time["today"] == date and int(str(time["current"])[:2]) > 15:
-            #The selected date is TODAY, but it's after closing time. (too late)
-            return apology("Please select a valid date within our opening hours.", user)
-        elif time["today"] == date and int(str(time["current"])[:2]) <= int(hour):
+        if time["today"] == date:
+            #Reservation for the same day --> should select another day
+            return apology("Please select another day", user)
+            
+            #TODO: Implement BETTER server-side validation. e.g. if the user edits their own HTML --> check for irregularities
+        #elif time["today"] == date and int(str(time["current"])[:2]) <= int(hour):
             #Selected appointment time for today is in the past
-            return apology("You can't select a date in the past!", user)
+            #return apology("You can't select a date in the past!", user)
+        
         if db.execute("SELECT id FROM appointments WHERE date = (?) and hour = (?) and status = (?);",date,hour,"accepted") != []:
             #Occupied date
             return apology("This date and time is taken already! Please select another one.", user)
