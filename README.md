@@ -63,11 +63,11 @@ Utility functions used in the app:
 ## 👨‍⚕️ admin_manager.py  
 
 A simple script to manage staff accounts.  
-Enables creation of new admin users, whose credentials are stored in **`all.db`** (hashed passwords included).
+Enables creation of new admin users, whose credentials are stored in **`vet_clinic.db`** (hashed passwords included).
 
 ---
 
-## 🗃️ all.db  
+## 🗃️ vet_clinic.db  
 
 This SQLite database includes two primary tables:
 
