@@ -52,29 +52,28 @@ def appointments():
         return render_template("appointments.html", min = tomorrow, max = time["max"], taken=taken, user=user)
 
     elif request.method == "POST":
-        name = request.form.get("name")
-        email = request.form.get("email")
-        option = request.form.get("option")
-        date = request.form.get("date")
-        hour = request.form.get("hour")
-        #print(name,email, option, date, hour)
+        usr_name = request.form.get("name")
+        usr_email = request.form.get("email")
+        usr_option = request.form.get("option")
+        usr_date = request.form.get("date")
+        usr_hour = request.form.get("hour")
+        #print(usr_name,usr_email, usr_option, usr_dateusr_, hour)
 
 
         time = get_time()
-        if time["today"] == date:
+        if time["today"] == usr_date:
             #Reservation for the same day --> should select another day
             return apology("Please select another day", user)
             
-            #TODO: Implement BETTER server-side validation. e.g. if the user edits their own HTML --> check for irregularities
-        #elif time["today"] == date and int(str(time["current"])[:2]) <= int(hour):
-            #Selected appointment time for today is in the past
-            #return apology("You can't select a date in the past!", user)
+            #############################################
+            #TODO: Implement FULL server-side validation.
+            #############################################
         
-        if db.execute("SELECT id FROM appointments WHERE date = (?) and hour = (?) and status = (?);",date,hour,"accepted") != []:
+        if db.execute("SELECT id FROM appointments WHERE date = (?) and hour = (?) and status = (?);",usr_date,usr_hour,"accepted") != []:
             #Occupied date
             return apology("This date and time is taken already! Please select another one.", user)
         else:
-            db.execute("INSERT INTO appointments (name, email, option, date,hour,status) VALUES (?,?,?,?,?,?);",name,email,option,date,hour,"pending")
+            db.execute("INSERT INTO appointments (name, email, option, date,hour,status) VALUES (?,?,?,?,?,?);",usr_name, usr_email, usr_option, usr_date, usr_hour, "pending")
             return render_template("message.html", user=user)
 
 
