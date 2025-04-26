@@ -114,7 +114,7 @@ It includes:
 - Fields: name, email, date, time, reason  
 - **Client-side validation:**  
   - Valid email format  
-  - Date must be today or within 90 days  
+  - Date must be within 60 days  
   - Time must be during working hours  
 - **Server-side validation (in `app.py`):**  
   - Prevents double-bookings  
