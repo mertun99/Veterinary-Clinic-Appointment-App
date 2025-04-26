@@ -90,16 +90,16 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">Operation</th>
+                        <th scope="col">Service</th>
                         <th scope="col">Date</th>
-                        <th scope="col">Hour</th>
+                        <th scope="col">Time</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for appointment in taken %}
                     <tr>
                         <th scope="row">{{appointment["option"]}}</th>
-                        <th scope="row">{{appointment["date"]}}</th>
+                        <th scope="row">{{appointment["formatted_date"]}}</th>
                         <th scope="row">{{appointment["hour"]}}:00</th>
                     </tr>
                     {% endfor %}
