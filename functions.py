@@ -25,12 +25,14 @@ def login_required(f): #from CS50
 #https://www.programiz.com/python-programming/datetime
 #https://www.geeksforgeeks.org/python-datetime-timedelta-function/
 def get_time():
-    today = datetime.datetime.now().strftime("%Y-%m-%d")
-    max = datetime.datetime.now() + timedelta(days=90)
-    max = max.strftime("%Y-%m-%d")
-    current = datetime.datetime.now().strftime("%H:%M")
-    print(today,max,current)
-    return today,max,current
+    now = datetime.datetime.now()
+    time_data = {
+        "today": now.strftime("%Y-%m-%d"),
+        "tomorrow": (now + timedelta(days=1)).strftime("%Y-%m-%d"),
+        "max": (now + timedelta(days=90)).strftime("%Y-%m-%d"),
+        "current": now.strftime("%H:%M")
+    }
+    return time_data
 
 def apology(message, user):
     return render_template("apology.html", message = message, user=user)
