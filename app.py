@@ -46,9 +46,9 @@ def appointments():
     check_if_logged_in()
     if request.method == "GET":
         time = get_time()
-
-        taken = db.execute("SELECT * FROM appointments WHERE status = 'accepted' AND date >= (?) ORDER BY date, hour ASC;", (time[0]))
-        return render_template("appointments.html", min = min[0], max = time[1], taken=taken, user=user)
+        today = time["today"]
+        taken = db.execute("SELECT * FROM appointments WHERE status = 'accepted' AND date >= (?) ORDER BY date, hour ASC;", (today))
+        return render_template("appointments.html", min = time["today"], max = time["max"], taken=taken, user=user)
 
     elif request.method == "POST":
         name = request.form.get("name")
@@ -60,10 +60,10 @@ def appointments():
 
 
         time = get_time()
-        if time[0] == date and int(str(time[2])[:2]) > 15:
+        if time["today"] == date and int(str(time["current"])[:2]) > 15:
             #The selected date is TODAY, but it's after closing time. (too late)
             return apology("Please select a valid date within our opening hours.", user)
-        elif time[0] == date and int(str(time[2])[:2]) <= int(hour):
+        elif time["today"] == date and int(str(time["current"])[:2]) <= int(hour):
             #Selected appointment time for today is in the past
             return apology("You can't select a date in the past!", user)
         if db.execute("SELECT id FROM appointments WHERE date = (?) and hour = (?) and status = (?);",date,hour,"accepted") != []:
@@ -174,7 +174,7 @@ def console():
 @login_required
 def clear():
     time = get_time()
-    today = time[0]
+    today = time["today"]
     db.execute("DELETE FROM appointments WHERE date < ?;",today)
     db.execute("DELETE FROM appointments WHERE status = ?;", "rejected")
     db.execute("DELETE FROM appointments WHERE status = ? AND date < ?;", "accepted",today)
