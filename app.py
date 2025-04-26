@@ -64,11 +64,7 @@ def appointments():
         if time["today"] == usr_date:
             #Reservation for the same day --> should select another day
             return apology("Please select another day", user)
-            
-            #############################################
-            #TODO: Implement FULL server-side validation.
-            #############################################
-        
+            #TODO: Implement FULL server-side validation in the future..
         if db.execute("SELECT id FROM appointments WHERE date = (?) and hour = (?) and status = (?);",usr_date,usr_hour,"accepted") != []:
             #Occupied date
             return apology("This date and time is taken already! Please select another one.", user)
